@@ -4,46 +4,46 @@
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="${moduleId}-moveCapableRoutingStore" abstract="true">
+    <bean id="acosix-content-stores-moveCapableRoutingStore" abstract="true">
         <property name="policyComponent" ref="policyComponent" />
         <property name="dictionaryService" ref="DictionaryService" />
         <property name="nodeService" ref="NodeService" />
         <property name="storesCache" ref="routingContentStoreCache" />
     </bean>
 
-    <bean id="${moduleId}-propertyRestrictableRoutingStore" abstract="true" parent="${moduleId}-moveCapableRoutingStore">
+    <bean id="acosix-content-stores-propertyRestrictableRoutingStore" abstract="true" parent="acosix-content-stores-moveCapableRoutingStore">
         <property name="namespaceService" ref="NamespaceService" />
     </bean>
 
-    <bean id="${moduleId}-commonFacadeStore" abstract="true">
+    <bean id="acosix-content-stores-commonFacadeStore" abstract="true">
         <property name="namespaceService" ref="NamespaceService" />
         <property name="dictionaryService" ref="DictionaryService" />
     </bean>
 
     <bean id="simpleContentStoresTemplate-selectorPropertyRoutingStore" abstract="true"
-        class="${project.artifactId}.store.routing.SelectorPropertyContentStore" parent="${moduleId}-propertyRestrictableRoutingStore">
+          class="de.acosix.alfresco.repo.store.routing.SelectorPropertyContentStore" parent="acosix-content-stores-propertyRestrictableRoutingStore">
         <property name="constraintRegistry" ref="cm:constraintRegistry" />
     </bean>
     <alias alias="simpleContentStoresTemplate-selectorPropertyStore" name="simpleContentStoresTemplate-selectorPropertyRoutingStore" />
 
     <bean id="simpleContentStoresTemplate-siteRoutingStore" abstract="true"
-        class="${project.artifactId}.store.routing.SiteRoutingContentStore" parent="${moduleId}-propertyRestrictableRoutingStore" />
+          class="de.acosix.alfresco.repo.store.routing.SiteRoutingContentStore" parent="acosix-content-stores-propertyRestrictableRoutingStore" />
 
     <bean id="simpleContentStoresTemplate-tenantRoutingStore" abstract="true"
-        class="${project.artifactId}.store.routing.TenantRoutingContentStore" parent="${moduleId}-propertyRestrictableRoutingStore" />
+          class="de.acosix.alfresco.repo.store.routing.TenantRoutingContentStore" parent="acosix-content-stores-propertyRestrictableRoutingStore" />
 
     <bean id="simpleContentStoresTemplate-siteRoutingFileStore" abstract="true"
-        class="${project.artifactId}.store.file.SiteRoutingFileContentStore" parent="${moduleId}-moveCapableRoutingStore">
+          class="de.acosix.alfresco.repo.store.file.SiteRoutingFileContentStore" parent="acosix-content-stores-moveCapableRoutingStore">
         <property name="namespaceService" ref="NamespaceService" />
     </bean>
 
-    <bean id="simpleContentStoresTemplate-standardFileStore" abstract="true" class="${project.artifactId}.store.file.FileContentStore" />
+    <bean id="simpleContentStoresTemplate-standardFileStore" abstract="true" class="de.acosix.alfresco.repo.store.file.FileContentStore" />
 
     <bean id="simpleContentStoresTemplate-defaultTenantFileStore" abstract="true"
-        class="${project.artifactId}.store.file.TenantRoutingFileContentStore" parent="baseTenantRoutingContentStore" />
+          class="de.acosix.alfresco.repo.store.file.TenantRoutingFileContentStore" parent="baseTenantRoutingContentStore" />
 
     <bean id="simpleContentStoresTemplate-dummyFallbackStore" abstract="true"
-        class="${project.artifactId}.store.file.DummyFallbackContentStore">
+        class="de.acosix.alfresco.repo.store.file.DummyFallbackContentStore">
         <property name="mimetypeService" ref="MimetypeService" />
         <property name="dummyFilePaths">
             <list>
@@ -70,34 +70,34 @@
         name="simpleContentStoresTemplate-siteRoutingFileStore" />
 
     <bean id="simpleContentStoresTemplate-deduplicatingFacadeStore" abstract="true"
-        class="${project.artifactId}.store.facade.DeduplicatingContentStore" parent="${moduleId}-commonFacadeStore">
+          class="de.acosix.alfresco.repo.store.facade.DeduplicatingContentStore" parent="acosix-content-stores-commonFacadeStore">
         <property name="temporaryStore">
-            <bean class="${project.artifactId}.store.file.FileContentStore">
+            <bean class="de.acosix.alfresco.repo.store.file.FileContentStore">
                 <property name="rootDirectory" value="${java.io.tmpdir}/Alfresco" />
             </bean>
         </property>
     </bean>
 
-    <bean id="simpleContentStoresTemplate-standardCachingStore" class="${project.artifactId}.beans.CachingContentStoreFactoryBean"
+    <bean id="simpleContentStoresTemplate-standardCachingStore" class="de.acosix.alfresco.repo.beans.CachingContentStoreFactoryBean"
         scope="prototype">
         <property name="cacheFactory" ref="cacheFactory" />
         <property name="scheduler" ref="schedulerFactory" />
     </bean>
 
     <bean id="simpleContentStoresTemplate-aggregatingStore" abstract="true"
-        class="${project.artifactId}.store.combination.AggregatingContentStore" />
+        class="de.acosix.alfresco.repo.store.combination.AggregatingContentStore" />
 
     <bean id="simpleContentStoresTemplate-compressingFacadeStore" abstract="true"
-        class="${project.artifactId}.store.facade.CompressingContentStore" parent="${moduleId}-commonFacadeStore">
+          class="de.acosix.alfresco.repo.store.facade.CompressingContentStore" parent="acosix-content-stores-commonFacadeStore">
         <property name="temporaryStore">
-            <bean class="${project.artifactId}.store.file.FileContentStore">
+            <bean class="de.acosix.alfresco.repo.store.file.FileContentStore">
                 <property name="rootDirectory" value="${java.io.tmpdir}/Alfresco" />
             </bean>
         </property>
     </bean>
 
     <bean id="simpleContentStoresTemplate-encryptingFacadeStore" abstract="true"
-        class="${project.artifactId}.store.facade.EncryptingContentStore" parent="${moduleId}-commonFacadeStore">
+          class="de.acosix.alfresco.repo.store.facade.EncryptingContentStore" parent="acosix-content-stores-commonFacadeStore">
         <property name="contentDataDAO" ref="contentDataDAO" />
     </bean>
 </beans>

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Acosix/alfresco-simple-content-stores.svg?branch=master)](https://travis-ci.org/Acosix/alfresco-simple-content-stores)
+[![Build Status](https://travis-ci.org/Acosix/alfresco-simple-content-stores.svg?branch=master)](https://travis-ci.org/Acosix/alfresco-content-stores)
 
 # About
 
@@ -6,15 +6,15 @@ This addon provides a set of simple / common content store implementations to en
 
 ## Compatibility
 
-This module is built to be compatible with Alfresco 5.2 and above. It may be used on either Community or Enterprise Edition. Separate branches exist for compatibility versions targeting Alfresco [4.2](https://github.com/Acosix/alfresco-simple-content-stores/tree/alfresco-4.2) and [5.0/5.1](https://github.com/Acosix/alfresco-simple-content-stores/tree/alfresco-5.0).
+This module is built to be compatible with Alfresco 5.2 and above. It may be used on either Community or Enterprise Edition. Separate branches exist for compatibility versions targeting Alfresco [4.2](https://github.com/Acosix/alfresco-content-stores/tree/alfresco-4.2) and [5.0/5.1](https://github.com/Acosix/alfresco-content-stores/tree/alfresco-5.0).
 
 ## Provided Stores
 
-The [wiki](https://github.com/Acosix/alfresco-simple-content-stores/wiki) contains detailed information about all the stores this addon provides, as well as their configuration properties and configuration examples. Currently, this addon provides:
+The [wiki](https://github.com/Acosix/alfresco-content-stores/wiki) contains detailed information about all the stores this addon provides, as well as their configuration properties and configuration examples. Currently, this addon provides:
 
 - a simple [file store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/File-Store)
 - a [tenant routing file store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/Default-Tenant-Routing-File-Store) (for backwards compatibility with Alfresco default unencrypted content store)
-- a [site file store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/Site-File-Store)
+- a [site file store](https://github.com/Acosix/alfresco-content-stores/wiki/Site-File-Store)
 - a [site routing store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/Site-Routing-Store)
 - a [tenant routing store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/Tenant-Routing-Store)
 - a [selector property-based routing store](https://github.com/Acosix/alfresco-simple-content-stores/wiki/Selector-Property-Store)
@@ -101,8 +101,8 @@ In order to use a pre-built SNAPSHOT artifact published to the Open Source Sonat
 </dependency>
 
 <dependency>
-    <groupId>de.acosix.alfresco.simplecontentstores</groupId>
-    <artifactId>de.acosix.alfresco.simplecontentstores.repo</artifactId>
+    <groupId>de.acosix.alfresco.contentstores</groupId>
+    <artifactId>de.acosix.alfresco.contentstores.repo</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
     <type>jar</type>
     <classifier>installable</classifier>
@@ -119,8 +119,8 @@ In order to use a pre-built SNAPSHOT artifact published to the Open Source Sonat
 </dependency>
 
 <dependency>
-    <groupId>de.acosix.alfresco.simplecontentstores</groupId>
-    <artifactId>de.acosix.alfresco.simplecontentstores.repo</artifactId>
+    <groupId>de.acosix.alfresco.contentstores</groupId>
+    <artifactId>de.acosix.alfresco.contentstores.repo</artifactId>
     <version>1.0.0.0-SNAPSHOT</version>
     <type>amp</type>
 </dependency>
@@ -143,8 +143,8 @@ In order to use a pre-built SNAPSHOT artifact published to the Open Source Sonat
                 <type>amp</type>
             </overlay>
             <overlay>
-                <groupId>de.acosix.alfresco.simplecontentstores</groupId>
-                <artifactId>de.acosix.alfresco.simplecontentstores.repo</artifactId>
+                <groupId>de.acosix.alfresco.contentstores</groupId>
+                <artifactId>de.acosix.alfresco.contentstores.repo</artifactId>
                 <type>amp</type>
             </overlay>
         </overlays>
@@ -163,8 +163,8 @@ For Alfresco SDK 3 beta users:
         <type>amp</type>
     </moduleDependency>
     <moduleDependency>
-        <groupId>de.acosix.alfresco.simplecontentstores</groupId>
-        <artifactId>de.acosix.alfresco.simplecontentstores.repo</artifactId>
+        <groupId>de.acosix.alfresco.contentstores</groupId>
+        <artifactId>de.acosix.alfresco.contentstores.repo</artifactId>
         <version>1.0.0.0-SNAPSHOT</version>
         <type>amp</type>
     </moduleDependency>
@@ -177,7 +177,7 @@ Using Maven to build the Alfresco WAR is the **recommended** approach to install
 
 ## alfresco-mmt.jar / apply_amps
 
-The default Alfresco installer creates folders *amps* and *amps_share* where you can place AMP files for modules which Alfresco will install when you use the apply_amps script. Place the AMP for the *de.acosix.alfresco.simplecontentstores.repo* module in the *amps* directory, and execute the script to install them. You must restart Alfresco for the installation to take effect.
+The default Alfresco installer creates folders *amps* and *amps_share* where you can place AMP files for modules which Alfresco will install when you use the apply_amps script. Place the AMP for the *de.acosix.alfresco.contentstores.repo* module in the *amps* directory, and execute the script to install them. You must restart Alfresco for the installation to take effect.
 
 Alternatively you can use the alfresco-mmt.jar to install the modules as [described in the documentation](http://docs.alfresco.com/5.2/concepts/dev-extensions-modules-management-tool.html).
 
@@ -191,7 +191,7 @@ For this addon the following JARs need to be dropped into &lt;tomcat&gt;/webapps
 
  - de.acosix.alfresco.utility.common-&lt;version&gt;.jar
  - de.acosix.alfresco.utility.repo-&lt;version&gt;-installable.jar
- - de.acosix.alfresco.simplecontentstores.repo-&lt;version&gt;-installable.jar
+ - de.acosix.alfresco.contentstores.repo-&lt;version&gt;-installable.jar
  - xz-1.5.jar (3rd-party JAR for compression)
  
 If Alfresco has been setup by using the official installer, another, **explicitly recommended** way to install the module manually would be by dropping the JAR(s) into the &lt;alfresco&gt;/modules/platform (Repository-tier) or &lt;alfresco&gt;/modules/share (Share-tier) folders.

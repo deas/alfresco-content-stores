@@ -4,9 +4,9 @@
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="${moduleId}-enablingBootstrap"
+    <bean id="acosix-content-stores-enablingBootstrap"
         class="de.acosix.alfresco.utility.common.spring.PropertyAlteringBeanDefinitionRegistryPostProcessor">
-        <property name="enabledPropertyKey" value="simpleContentStores.enabled" />
+        <property name="enabledPropertyKey" value="contentStores.enabled" />
         <property name="propertiesSource" ref="global-properties" />
         <property name="targetBeanName" value="ContentStore" />
         <property name="expectedClassName" value="org.alfresco.repo.management.subsystems.CryptodocSwitchableApplicationContextFactory" />
@@ -23,12 +23,12 @@
             <value>ContentStore</value>
         </property>
         <property name="typeName">
-            <value>simple-content-stores</value>
+            <value>content-stores</value>
         </property>
         <property name="instancePath">
             <list>
                 <value>managed</value>
-                <value>simple-content-stores</value>
+                <value>content-stores</value>
             </list>
         </property>
     </bean>
